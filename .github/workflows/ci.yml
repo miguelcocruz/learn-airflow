@@ -1,0 +1,13 @@
+name: ci
+on: [pull-request]
+jobs:
+  formating:
+    steps:
+      - name: "Checkout repo"
+        run: action/checkout@v3
+      - name: "Start containers"
+        run: "cd ch03 && make up"
+      - name: "Run black"
+        run: "docker exec airflow python -m black"
+      - name: "Run flake8"
+        run: "docker exec airflow python flake8"
