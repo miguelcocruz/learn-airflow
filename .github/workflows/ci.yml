@@ -9,6 +9,6 @@ jobs:
       - name: "Start containers"
         run: "cd ch03 && make up"
       - name: "Run black"
-        run: "docker exec airflow python -m black"
+        run: "docker exec airflow python -m black ."
       - name: "Run flake8"
         run: "docker exec airflow python flake8"
