@@ -8,6 +8,8 @@ jobs:
         uses: actions/checkout@v2
       - name: "Start containers"
         run: "cd ch03 && make up"
+      - name: "Set permissions"
+        run: "chmod -R u=rwx,g=rwx,o=rwx ch03/dags"
       - name: "Debug"
         run: "docker exec airflow ls -l ./dags"
       - name: "Run black"
