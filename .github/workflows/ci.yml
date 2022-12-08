@@ -15,4 +15,4 @@ jobs:
       - name: "Run black"
         run: "docker exec airflow python -m black -S --line-length=75 ./dags"
       - name: "Run flake8"
-        run: "docker exec airflow python flake8"
+        run: "docker exec airflow flake8"
