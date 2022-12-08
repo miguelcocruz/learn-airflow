@@ -8,7 +8,9 @@ jobs:
         uses: actions/checkout@v3
       - name: "Start containers"
         run: "cd ch03 && make up"
+      - name: "Echo ls"
+        run: "ls"
       - name: "Run black"
-        run: "docker exec airflow python -m black ."
+        run: "docker exec airflow python -m black ./dags"
       - name: "Run flake8"
         run: "docker exec airflow python flake8"
