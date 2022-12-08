@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout repo"
-        run: action/checkout@v3
+        run: actions/checkout@v3
       - name: "Start containers"
         run: "cd ch03 && make up"
       - name: "Run black"
