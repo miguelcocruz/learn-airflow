@@ -11,6 +11,6 @@ jobs:
       - name: "Echo ls"
         run: "ls"
       - name: "Run black"
-        run: "docker exec airflow python -m black ./dags"
+        run: "docker exec airflow python -m black -S ./dags"
       - name: "Run flake8"
         run: "docker exec airflow python flake8"
