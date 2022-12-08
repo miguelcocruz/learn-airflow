@@ -1,13 +1,18 @@
 name: ci
-on: [pull-request]
+on: [pull_request]
 jobs:
   formating:
+    runs-on: ubuntu-latest
     steps:
       - name: "Checkout repo"
-        run: action/checkout@v3
+        uses: actions/checkout@v2
       - name: "Start containers"
         run: "cd ch03 && make up"
+      - name: "Set permissions"
+        run: "chmod -R u=rwx,g=rwx,o=rwx ch03/dags"
+      - name: "Debug"
+        run: "docker exec airflow ls -l ./dags"
       - name: "Run black"
-        run: "docker exec airflow python -m black"
+        run: "docker exec airflow python -m black -S --line-length=75 ./dags"
       - name: "Run flake8"
-        run: "docker exec airflow python flake8"
+        run: "docker exec airflow flake8 ./dags"
