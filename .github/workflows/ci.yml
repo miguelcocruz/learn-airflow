@@ -8,6 +8,8 @@ jobs:
         uses: actions/checkout@v2
       - name: "Start containers"
         run: "cd ch03 && make up"
+      - name: "Debug"
+        run: "docker exec airflow ls -l ./dags"
       - name: "Run black"
         run: "docker exec airflow python -m black -S --line-length=75 ./dags"
       - name: "Run flake8"
